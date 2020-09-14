@@ -8,7 +8,7 @@ public class Calculator {
 
     public void cal() {
         try {
-            System.out.println("вводите числа через пробел, максимальное число 9");
+            System.out.println("вводите числа через пробел, максимальное число 10");
             System.out.println("'пример 2 + 3'");
             String tempString = userInput.nextLine();
             String[] calcString = tempString.split(" ");
@@ -19,11 +19,16 @@ public class Calculator {
                    for (int x = 0; x <= calcString.length; x += 2) {
                    enumNumber[x] = Enum.toInt(calcString[x]);
                    }
+                   if (!parser(calcString[2])){
+                       throw new NumberFormatException();
+                   }
                    mathematicalActions(calcString,enumNumber);
                    break;
                }
                 calcIntegers[i] = Integer.parseInt(calcString[i]);
                 if (calcIntegers[i] > 10 || calcIntegers[i] < 0 ) {
+                    throw new NumberFormatException();
+                } if (parser(calcString[2])){
                     throw new NumberFormatException();
                 }
             }
