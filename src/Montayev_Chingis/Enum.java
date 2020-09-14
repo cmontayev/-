@@ -1,27 +1,31 @@
 package Montayev_Chingis;
 
 public enum Enum {
-        I("I", 1), II("I", 2),III("I", 3), IV("IV", 4),V("V", 5),
-        private int value;
-        private String key;
+    I("I", 1), II("I", 2), III("I", 3), IV("IV", 4), V("V", 5),
+    VI("VI", 6), VII("VII", 7), VIII("VIII", 8), IX("IX", 9), X("X", 10);
 
-        Enum(String key, int value) {
-            this.value = value;
-        }
+    private int value;
+    private String key;
 
-        public int getValue() {
-            return value;
-        }
-            public String getKey() {
-                return key;
-            }
+    Enum(String key, int value) {
+        this.value = value;
+        this.key = key;
+    }
 
-            int toInt(String key) {
-                for (Enum i: this.values())
-                    if (i.getKey().equals(key))
-                        return i.getValue();
+    public int getValue() {
+        return value;
+    }
 
-                return 1;
-            }
+    public String getKey() {
+        return key;
+    }
+
+   static int toInt(String key) {
+        for (Enum i : Enum.values())
+            if (i.getKey().equals(key))
+                return i.getValue();
+
+        return 0;
+    }
 
 }
