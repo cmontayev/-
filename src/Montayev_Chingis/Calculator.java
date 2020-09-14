@@ -6,29 +6,29 @@ public class Calculator {
     Scanner userInput = new Scanner(System.in);
 
 
-    public void cal() {
+    public void calculator() {
         try {
-            System.out.println("вводите числа через пробел, максимальное число 10");
-            System.out.println("'пример 2 + 3'");
+            regulations();
             String tempString = userInput.nextLine();
             String[] calcString = tempString.split(" ");
             int[] calcIntegers = new int[3];
             for (int i = 0; i <= calcString.length; i += 2) {
-               if(parser(calcString[i])) {
-                   int[] enumNumber = new int[3];
-                   for (int x = 0; x <= calcString.length; x += 2) {
-                   enumNumber[x] = Enum.toInt(calcString[x]);
-                   }
-                   if (!parser(calcString[2])){
-                       throw new NumberFormatException();
-                   }
-                   mathematicalActions(calcString,enumNumber);
-                   break;
-               }
+                if (parser(calcString[i])) {
+                    int[] enumNumber = new int[3];
+                    for (int x = 0; x <= calcString.length; x += 2) {
+                        enumNumber[x] = Enum.toInt(calcString[x]);
+                    }
+                    if (!parser(calcString[2])) {
+                        throw new NumberFormatException();
+                    }
+                    mathematicalActions(calcString, enumNumber);
+                    break;
+                }
                 calcIntegers[i] = Integer.parseInt(calcString[i]);
-                if (calcIntegers[i] > 10 || calcIntegers[i] < 0 ) {
+                if (calcIntegers[i] > 10 || calcIntegers[i] < 0) {
                     throw new NumberFormatException();
-                } if (parser(calcString[2])){
+                }
+                if (parser(calcString[2])) {
                     throw new NumberFormatException();
                 }
             }
@@ -36,10 +36,15 @@ public class Calculator {
             mathematicalActions(calcString, calcIntegers);
         } catch (Exception a) {
             System.out.println("ошибка введите коректно");
-            cal();
+            calculator();
         }
 
 
+    }
+
+    private void regulations() {
+        System.out.println("вводите числа через пробел, максимальное число 10");
+        System.out.println("'пример 2 + 3'");
     }
 
     private void mathematicalActions(String[] calcString, int[] calcIntegers) {
@@ -81,7 +86,6 @@ public class Calculator {
         }
         return isString;
     }
-
 
 
 }
