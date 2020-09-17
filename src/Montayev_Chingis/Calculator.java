@@ -23,8 +23,8 @@ public class Calculator {
                         throw new NumberFormatException();
                     }
                     result = mathematicalActions(calcString, enumNumber);
-                    System.out.println(CreationRomanNumber.toRoman(result));
-                    break;
+                    System.out.println("result = " + CreationRomanNumber.toRoman(result));
+                    return;
                 }
                 calcIntegers[i] = Integer.parseInt(calcString[i]);
                 if (calcIntegers[i] > 10 || calcIntegers[i] < 0) {
@@ -38,6 +38,7 @@ public class Calculator {
             result = mathematicalActions(calcString, calcIntegers);
             System.out.println("result = " + result);
         } catch (Exception a) {
+//            a.printStackTrace();
             System.out.println("ошибка введите коректно");
             calculator();
         }
@@ -51,28 +52,34 @@ public class Calculator {
     }
 
     private int mathematicalActions(String[] calcString, int[] calcIntegers) {
-        int result = 0;
-        switch (calcString[1]) {
-            case "+":
-                result = calcIntegers[0] + calcIntegers[2];
-                return result;
-            case "-":
-                result = calcIntegers[0] - calcIntegers[2];
-                return result;
+        try {
+            int result = 0;
+            switch (calcString[1]) {
+                case "+":
+                    result = calcIntegers[0] + calcIntegers[2];
+                    return result;
+                case "-":
+                    result = calcIntegers[0] - calcIntegers[2];
+                    return result;
 
-            case "*":
-                result = calcIntegers[0] * calcIntegers[2];
-                return result;
+                case "*":
+                    result = calcIntegers[0] * calcIntegers[2];
+                    return result;
 
-            case "/":
-                result = calcIntegers[0] / calcIntegers[2];
-                return result;
+                case "/":
+                    result = calcIntegers[0] / calcIntegers[2];
+                    return result;
 
+            }
+
+
+        } catch (ArithmeticException e) {
+            System.out.println();
         }
         return 0;
     }
 
-   private boolean parser(String s) {
+    private boolean parser(String s) {
         boolean isString = false;
         String[] c = s.split("");
         for (int i = 0; i < c.length; i++) {
