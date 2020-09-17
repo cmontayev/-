@@ -12,6 +12,7 @@ public class Calculator {
             String tempString = userInput.nextLine();
             String[] calcString = tempString.split(" ");
             int[] calcIntegers = new int[3];
+            int result = 0;
             for (int i = 0; i <= calcString.length; i += 2) {
                 if (parser(calcString[i])) {
                     int[] enumNumber = new int[3];
@@ -21,7 +22,8 @@ public class Calculator {
                     if (!parser(calcString[2])) {
                         throw new NumberFormatException();
                     }
-                    mathematicalActions(calcString, enumNumber);
+                    result = mathematicalActions(calcString, enumNumber);
+                    System.out.println(CreationRomanNumber.toRoman(result));
                     break;
                 }
                 calcIntegers[i] = Integer.parseInt(calcString[i]);
@@ -33,7 +35,8 @@ public class Calculator {
                 }
             }
 
-            mathematicalActions(calcString, calcIntegers);
+            result = mathematicalActions(calcString, calcIntegers);
+            System.out.println("result = " + result);
         } catch (Exception a) {
             System.out.println("ошибка введите коректно");
             calculator();
@@ -47,30 +50,29 @@ public class Calculator {
         System.out.println("'пример 2 + 3'");
     }
 
-    private void mathematicalActions(String[] calcString, int[] calcIntegers) {
+    private int mathematicalActions(String[] calcString, int[] calcIntegers) {
         int result = 0;
         switch (calcString[1]) {
             case "+":
                 result = calcIntegers[0] + calcIntegers[2];
-                System.out.println("result = " + result);
-                break;
+                return result;
             case "-":
                 result = calcIntegers[0] - calcIntegers[2];
-                System.out.println("result = " + result);
-                break;
+                return result;
 
             case "*":
                 result = calcIntegers[0] * calcIntegers[2];
-                System.out.println("result = " + result);
-                break;
+                return result;
+
             case "/":
                 result = calcIntegers[0] / calcIntegers[2];
-                System.out.println("result = " + result);
-                break;
+                return result;
+
         }
+        return 0;
     }
 
-    boolean parser(String s) {
+   private boolean parser(String s) {
         boolean isString = false;
         String[] c = s.split("");
         for (int i = 0; i < c.length; i++) {

@@ -2,7 +2,8 @@ package Montayev_Chingis;
 
 public enum Enum {
     I("I", 1), II("I", 2), III("I", 3), IV("IV", 4), V("V", 5),
-    VI("VI", 6), VII("VII", 7), VIII("VIII", 8), IX("IX", 9), X("X", 10);
+    VI("VI", 6), VII("VII", 7), VIII("VIII", 8), IX("IX", 9), X("X", 10),
+    XL("XL",40),L( "L",50),XC( "XC",90),C("C",100);
 
     private int value;
     private String key;
